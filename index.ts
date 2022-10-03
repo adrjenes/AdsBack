@@ -3,6 +3,7 @@ import 'express-async-errors';
 import cors from "cors";
 import {handleError} from "./utils/errors";
 import rateLimit from 'express-rate-limit';
+import {adRouter} from "./routers/ad.router";
 const app = express();
 
 app.use(cors({
@@ -17,6 +18,8 @@ app.use(rateLimit({
 
 // Routes...
 
+app.use('/ad', adRouter);
+
 app.get('/', async (req, res) => {
     throw new Error('Daaamn!');
 })
@@ -26,3 +29,7 @@ app.use(handleError);
 app.listen(3001, '0.0.0.0', () => {
     console.log('Listening on port http://localhost:3001');
 })
+
+
+
+
